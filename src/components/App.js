@@ -1,19 +1,48 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import './App.css';
+import styled from 'styled-components';
+
+const BackgroundContainer = styled.div`
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+  width:100%;
+`;
+
+const RadialGradient = styled.div`
+  display: flex;
+  height:80%;
+  width:80%;
+  justify-content: center;
+  align-items: center;
+  /*Fallback if gradeints don't work */
+  background: #9b59b6;
+  /*Linear gradient... */
+  background: 
+    radial-gradient(
+     at center, #a1edab, #51995e
+    );
+`;
+
+const PageContent = styled.div`
+  display: flex;
+  z-index: 100;
+  width: 95%;
+  height: 92%;
+  background-color: white;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BackgroundContainer>
+        <RadialGradient>
+            <PageContent>
+                <h1>Hi</h1>
+            </PageContent>
+        </RadialGradient>
+      </BackgroundContainer>
     );
   }
 }
