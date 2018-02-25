@@ -1,16 +1,23 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { injectGlobal } from 'styled-components';
 
-import './components/index.css';
 import App from './components/App';
 import NotFound from './components/NotFound';
 import registerServiceWorker from './registerServiceWorker';
 
-const repo = `/${window.location.pathname.split('/')[1]}`;
+injectGlobal`
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+`;
+
 const Root = () => {
     return (
-        <Router basename={repo}>
+        <Router>
             <div>
                 <Switch>
                     <Route exact path="/" component={App} />
@@ -22,7 +29,4 @@ const Root = () => {
 };
 
 render(<Root/>, document.querySelector('#root'));
-
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+registerServiceWorker();
