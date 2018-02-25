@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 const BackgroundContainer = styled.div`
@@ -37,23 +36,35 @@ const PageContent = styled.div`
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { x: 0, y: 0};
+        this.state = { x: 0, y: 0, width: 0, height: 0};
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     _onMouseMove(e) {
-        const position = ReactDOM.findDOMNode(this).getBoundingClientRect();
-        console.log(position, e.nativeEvent.offsetX, e.screenX);
-
         this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
     }
 
-  render() {
-    const {x,y} = this.state;
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
+
+    render() {
+    const { x, y, width, height } = this.state;
     return (
           <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
             <RadialGradient>
                 <PageContent>
-                    <h1>Hi {x} {y}</h1>
+                    <h1>Math.round(x / width* 100) { Math.round(x / width* 100) } For y: { Math.round(y / height* 100) }</h1>
                 </PageContent>
             </RadialGradient>
           </BackgroundContainer>
