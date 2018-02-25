@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Home from './Home';
 import styled from 'styled-components';
 
 const BackgroundContainer = styled.div`
@@ -23,16 +24,17 @@ const RadialGradient = styled.div.attrs({
   /*Linear gradient... */
   background: 
     radial-gradient(
-     at ${props => props.calcX}% ${props => props.calcY}%, #a1edab, #51995e
+     at ${props => props.calcX}% ${props => props.calcY}%, #a1edab, #182B1B
     );
 `;
 
 const PageContent = styled.div`
   display: flex;
   z-index: 100;
-  width: 95%;
-  height: 92%;
+  width: 92%;
+  height: 91%;
   background-color: white;
+  padding: 5px;
 `;
 
 class App extends Component {
@@ -64,10 +66,9 @@ class App extends Component {
         const {x, y, width, height} = this.state;
         return (
             <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
-                <RadialGradient calcX={Math.round(x / width * 100)} calcY={Math.round(y / height * 100)}>
+                <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y / height * 77)}>
                     <PageContent>
-                        <h1>Math.round(x / width* 100) {Math.round(x / width * 100)} For
-                            y: {Math.round(y / height * 100)}</h1>
+                        <Home/>
                     </PageContent>
                 </RadialGradient>
             </BackgroundContainer>
