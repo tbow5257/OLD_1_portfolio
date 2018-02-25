@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 
 const BackgroundContainer = styled.div`
@@ -10,7 +10,9 @@ const BackgroundContainer = styled.div`
   width:100%;
 `;
 
-const RadialGradient = styled.div`
+const RadialGradient = styled.div.attrs({
+
+})`
   display: flex;
   height:80%;
   width:80%;
@@ -21,7 +23,7 @@ const RadialGradient = styled.div`
   /*Linear gradient... */
   background: 
     radial-gradient(
-     at center, #a1edab, #51995e
+     at ${props => props.calcX}% ${props => props.calcY}%, #a1edab, #51995e
     );
 `;
 
@@ -36,12 +38,12 @@ const PageContent = styled.div`
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { x: 0, y: 0, width: 0, height: 0};
+        this.state = {x: 0, y: 0, width: 0, height: 0};
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     _onMouseMove(e) {
-        this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+        this.setState({x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY});
     }
 
     componentDidMount() {
@@ -54,22 +56,23 @@ class App extends Component {
     }
 
     updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        this.setState({width: window.innerWidth, height: window.innerHeight});
     }
 
 
     render() {
-    const { x, y, width, height } = this.state;
-    return (
-          <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
-            <RadialGradient>
-                <PageContent>
-                    <h1>Math.round(x / width* 100) { Math.round(x / width* 100) } For y: { Math.round(y / height* 100) }</h1>
-                </PageContent>
-            </RadialGradient>
-          </BackgroundContainer>
-    );
-  }
+        const {x, y, width, height} = this.state;
+        return (
+            <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
+                <RadialGradient calcX={Math.round(x / width * 100)} calcY={Math.round(y / height * 100)}>
+                    <PageContent>
+                        <h1>Math.round(x / width* 100) {Math.round(x / width * 100)} For
+                            y: {Math.round(y / height * 100)}</h1>
+                    </PageContent>
+                </RadialGradient>
+            </BackgroundContainer>
+        );
+    }
 }
 
 export default App;
