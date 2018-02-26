@@ -32,7 +32,7 @@ const PageContent = styled.div`
   display: flex;
   z-index: 100;
   width: 92%;
-  height: 91%;
+  height: 88%;
   background-color: white;
   padding: 5px;
 `;
