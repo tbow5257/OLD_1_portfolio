@@ -45,7 +45,7 @@ class App extends Component {
     }
 
     _onMouseMove(e) {
-        this.setState({x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY});
+        this.setState({x: e.screenX, y: e.screenY});
     }
 
     componentDidMount() {
