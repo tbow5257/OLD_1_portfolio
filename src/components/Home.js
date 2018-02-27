@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import { Button } from 'semantic-ui-react'
 import github from '../assets/github.png'
 import twitter from '../assets/twitter.png'
 import icon from '../assets/noun.png'
@@ -28,6 +29,10 @@ const Logo = styled.div`
 
 const HelloText = styled.div`
   font-size: 2.5em;
+  text-align: center;
+  p:nth-of-type(2) {
+    font-size: 0.7em;
+  }
 `;
 
 const Contact = styled.div`
@@ -45,7 +50,12 @@ class Home extends Component {
         return (
             <Page>
                 <Logo> <img src={icon} alt='Dankbytes Icon'></img>Dankbytes</Logo>
-                <HelloText>Thomas Bowen's portfolio page</HelloText>
+                <HelloText>
+                    <p>Thomas Bowen's portfolio page</p>
+                    <p>A web developer on the west coast</p>
+                    <Button>Work</Button>
+                    <Button>About</Button>
+                </HelloText>
                 <Contact>   <img src={email} alt='Email' data-tip="hello at tjbowen.me"></img>
                     <ReactTooltip delayHide={1000}  />
                     <img src={github} alt='Github'></img>

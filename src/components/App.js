@@ -16,7 +16,7 @@ const RadialGradient = styled.div.attrs({
 })`
   display: flex;
   height:80%;
-  width:80%;
+  width:75%;
   justify-content: center;
   align-items: center;
   /*Fallback if gradeints don't work */
@@ -32,7 +32,7 @@ const PageContent = styled.div`
   display: flex;
   z-index: 100;
   width: 92%;
-  height: 88%;
+  height: 92%;
   background-color: white;
   padding: 5px;
 `;
