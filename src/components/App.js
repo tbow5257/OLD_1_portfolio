@@ -12,20 +12,14 @@ const BackgroundContainer = styled.div`
 `;
 
 const RadialGradient = styled.div.attrs({
-
+    style: props => ({ background: `radial-gradient(at ${props.calcX}% ${props.calcY}%, #a1edab, #182B1B)` })
 })`
   display: flex;
   height:80%;
   width:75%;
   justify-content: center;
   align-items: center;
-  /*Fallback if gradeints don't work */
-  background: #9b59b6;
-  /*Linear gradient... */
-  background: 
-    radial-gradient(
-     at ${props => props.calcX}% ${props => props.calcY}%, #a1edab, #182B1B
-    );
+
 `;
 
 const PageContent = styled.div`
@@ -39,13 +33,13 @@ const PageContent = styled.div`
 
 class App extends Component {
     constructor(props) {
-        super(props);
-        this.state = {x: 0, y: 0, width: 0, height: 0};
+        super();
+        this.state = {x: 0, y: 0, width: 0, height: 0, calcX: 0};
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     _onMouseMove(e) {
-        this.setState({x: e.screenX+1920, y: e.screenY});
+        this.setState({x: e.screenX, y: e.screenY});
     }
 
     componentDidMount() {
@@ -66,7 +60,7 @@ class App extends Component {
         const {x, y, width, height} = this.state;
         return (
             <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
-                <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y / height * 77)}>
+                <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y/ height *77)}>
                     <PageContent>
                         <Home/>
                     </PageContent>
