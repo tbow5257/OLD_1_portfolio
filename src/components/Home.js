@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import github from '../assets/github.png'
 import twitter from '../assets/twitter.png'
 import icon from '../assets/noun.png'
@@ -44,6 +44,20 @@ const Contact = styled.div`
   }
 `;
 
+const StyledButton = styled(Button).attrs({
+})`
+    && {
+    background: #61a46a;
+    color: #FFF;
+    //border: 1px solid #233a25;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 15px;
+  }
+`;
+
+
+
 
 class Home extends Component {
     render() {
@@ -53,8 +67,8 @@ class Home extends Component {
                 <HelloText>
                     <p>Thomas Bowen's portfolio page</p>
                     <p>A web developer on the west coast</p>
-                    <Button>Work</Button>
-                    <Button>About</Button>
+                    <StyledButton><Icon name="briefcase"/>Work</StyledButton>
+                    <StyledButton><Icon name="hand peace"/>About</StyledButton>
                 </HelloText>
                 <Contact>   <img src={email} alt='Email' data-tip="hello at tjbowen.me"></img>
                     <ReactTooltip delayHide={1000}  />
