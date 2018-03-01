@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Home from './Home';
+import Work  from './Work';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 const BackgroundContainer = styled.div`
   display: flex;
@@ -62,7 +65,12 @@ class App extends Component {
             <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
                 <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y/ height *77)}>
                     <PageContent>
-                        <Home/>
+                        <Router>
+                            <div>
+                                <Route exact path="/" component={ Home } />
+                                <Route exact path="/work" component={ Work } />
+                            </div>
+                        </Router>
                     </PageContent>
                 </RadialGradient>
             </BackgroundContainer>

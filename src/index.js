@@ -19,14 +19,7 @@ injectGlobal`
 
 const Root = () => {
     return (
-        <Router>
-            <div>
-                <Switch>
-                    <Route exact path="/" component={App} />
-                    <Route component={NotFound} />
-                </Switch>
-            </div>
-        </Router>
+        <App />
     )
 };
 
