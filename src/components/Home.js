@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import { Link } from "react-router-dom";
 import { Button, Icon } from 'semantic-ui-react'
 import github from '../assets/github.png'
 import twitter from '../assets/twitter.png'
@@ -67,7 +68,7 @@ class Home extends Component {
                 <HelloText>
                     <p>Thomas Bowen's portfolio page</p>
                     <p>A web developer on the west coast</p>
-                    <StyledButton><Icon name="briefcase"/>Work</StyledButton>
+                    <Link to="/work"><StyledButton><Icon name="briefcase"/>Work</StyledButton></Link>
                     <StyledButton><Icon name="hand peace"/>About</StyledButton>
                 </HelloText>
                 <Contact>   <img src={email} alt='Email' data-tip="hello at tjbowen.me"></img>

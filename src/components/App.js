@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import Home from './Home';
 import Work  from './Work';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 
 const BackgroundContainer = styled.div`
@@ -34,6 +35,16 @@ const PageContent = styled.div`
   padding: 5px;
 `;
 
+const PageFade = (props) => (
+    <CSSTransition
+        {...props}
+        classNames="fadeTranslate"
+        timeout={1000}
+        mountOnEnter={true}
+        unmountOnExit={true}
+    />
+);
+
 class App extends Component {
     constructor(props) {
         super();
@@ -59,17 +70,24 @@ class App extends Component {
     }
 
 
+
     render() {
         const {x, y, width, height} = this.state;
+
+
         return (
             <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
                 <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y/ height *77)}>
                     <PageContent>
                         <Router>
-                            <div>
-                                <Route exact path="/" component={ Home } />
-                                <Route exact path="/work" component={ Work } />
-                            </div>
+                            <TransitionGroup>
+                                <PageFade >
+                                    <Switch>
+                                        <Route exact path="/" component={ Home } />
+                                        <Route exact path="/work" component={ Work } />
+                                    </Switch>
+                                </PageFade>
+                            </TransitionGroup>
                         </Router>
                     </PageContent>
                 </RadialGradient>
