@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Home from './Home';
-import Work  from './Work';
+import Work from './Work';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import {BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 
 const BackgroundContainer = styled.div`
@@ -16,7 +16,7 @@ const BackgroundContainer = styled.div`
 `;
 
 const RadialGradient = styled.div.attrs({
-    style: props => ({ background: `radial-gradient(at ${props.calcX}% ${props.calcY}%, #a1edab, #182B1B)` })
+    style: props => ({background: `radial-gradient(at ${props.calcX}% ${props.calcY}%, #a1edab, #182B1B)`})
 })`
   display: flex;
   height:80%;
@@ -45,6 +45,14 @@ const PageFade = (props) => (
     />
 );
 
+const StyledRouter = styled(Router)`
+  width: 100%;
+    display: flex;
+
+`;
+
+
+
 class App extends Component {
     constructor(props) {
         super();
@@ -70,28 +78,36 @@ class App extends Component {
     }
 
 
-
     render() {
         const {x, y, width, height} = this.state;
 
 
         return (
-            <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
-                <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y/ height *77)}>
-                    <PageContent>
-                        <Router>
-                            <TransitionGroup>
-                                <PageFade >
-                                    <Switch>
-                                        <Route exact path="/" component={ Home } />
-                                        <Route exact path="/work" component={ Work } />
-                                    </Switch>
-                                </PageFade>
-                            </TransitionGroup>
-                        </Router>
-                    </PageContent>
-                </RadialGradient>
-            </BackgroundContainer>
+            <StyledRouter>
+                <Route render={({location}) => (
+                    <div>
+                        <Route exact path="/"
+                               />
+                            <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
+                                <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y / height * 77)}>
+                                    <PageContent>
+                                        <TransitionGroup style={{display: 'flex', width: '100%'}}>
+                                            <CSSTransition key={location.key} classNames="fade" timeout={400}>
+                                                <Switch location={location}>
+                                                    <Route exact path="/" component={Home}/>
+                                                    <Route exact path="/work" component={Work}/>
+                                                    <Route render={() => <div>Not Found</div>} />
+                                                </Switch>
+                                            </CSSTransition>
+                                        </TransitionGroup>
+                                    </PageContent>
+                                </RadialGradient>
+                            </BackgroundContainer>
+                    </div>
+                    )}
+                />
+            </StyledRouter>
+
         );
     }
 }

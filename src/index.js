@@ -15,6 +15,17 @@ injectGlobal`
         font-family: sans-serif;
         font-size: 20px;
     }
+    
+    .fade-enter {
+  opacity: 0;
+  z-index: 9999;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
 `;
 
 const Root = () => {
