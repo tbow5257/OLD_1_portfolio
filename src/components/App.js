@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Home from './Home';
 import Work from './Work';
 import styled from 'styled-components';
-import {BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 
@@ -33,22 +33,6 @@ const PageContent = styled.div`
   height: 92%;
   background-color: white;
   padding: 5px;
-`;
-
-const PageFade = (props) => (
-    <CSSTransition
-        {...props}
-        classNames="fadeTranslate"
-        timeout={1000}
-        mountOnEnter={true}
-        unmountOnExit={true}
-    />
-);
-
-const StyledRouter = styled(Router)`
-  width: 100%;
-    display: flex;
-
 `;
 
 
@@ -83,7 +67,7 @@ class App extends Component {
 
 
         return (
-            <StyledRouter>
+            <Router>
                 <Route render={({location}) => (
                     <div>
                         <Route exact path="/"
@@ -92,7 +76,8 @@ class App extends Component {
                                 <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y / height * 77)}>
                                     <PageContent>
                                         <TransitionGroup style={{display: 'flex', width: '100%'}}>
-                                            <CSSTransition key={location.key} classNames="fade" timeout={400}>
+                                            <CSSTransition key={location.key} classNames="fade" timeout={400} mountOnEnter={true}
+                                                           unmountOnExit={true}>
                                                 <Switch location={location}>
                                                     <Route exact path="/" component={Home}/>
                                                     <Route exact path="/work" component={Work}/>
@@ -106,7 +91,7 @@ class App extends Component {
                     </div>
                     )}
                 />
-            </StyledRouter>
+            </Router>
 
         );
     }

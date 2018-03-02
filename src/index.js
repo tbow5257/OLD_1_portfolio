@@ -1,11 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
 import 'semantic-ui-css/semantic.min.css';
 
 import App from './components/App';
-import NotFound from './components/NotFound';
 import registerServiceWorker from './registerServiceWorker';
 
 injectGlobal`
@@ -26,7 +24,19 @@ injectGlobal`
   transition: opacity 250ms ease-in;
 }
 
+.fade-exit {
+  opacity: 1;
+}
+
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 250ms ease-in;
+}
+
 `;
+
+
 
 const Root = () => {
     return (

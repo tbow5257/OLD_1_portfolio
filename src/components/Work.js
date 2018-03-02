@@ -1,26 +1,33 @@
 import React, {Component} from 'react';
-import { render } from 'react-dom';
 import styled from 'styled-components';
 
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px;
+`;
+
+const Hi = styled.div`
+align-items: center;
+justify-items: center;
+`;
 
 
 export default class Work extends Component {
     render() {
         return (
-            <div>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-                <h1>hi</h1>
-            </div>
+            <Page>
+                <Hi>
+                    <p>Hi</p>
+                    <p>Hi</p>
+                    <p>Hi</p>
+                    <p>Hi</p>
+                    <p>Hi</p>
+                </Hi>
+            </Page>
             );
     }
 }
