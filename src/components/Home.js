@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
-import { Link } from "react-router-dom";
-import { Button, Icon } from 'semantic-ui-react'
+import {Link} from "react-router-dom";
+import {Button, Icon} from 'semantic-ui-react'
 import github from '../assets/github.png'
 import twitter from '../assets/twitter.png'
 import icon from '../assets/noun.png'
@@ -14,6 +14,7 @@ const Page = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
   margin: 10px;
 `;
 
@@ -38,15 +39,25 @@ const HelloText = styled.div`
 
 const Contact = styled.div`
   font-size: 1.5em;
+  margin: 20px;
+
   img {
     height: 40px;
     padding-top: 5px;
     margin: 0 25px 0 25px;
+    transition: all 200ms ease-in;
+    transform: scale(1);       
+    background: transparent !important;
+    &:hover {
+      transform: scale(1.5);
+      transition: all 200ms ease-in;
+      filter: drop-shadow(44px 44px 150px #222);
+        -webkit-filter: drop-shadow(5px 5px 5px #222 );
+
   }
 `;
 
-const StyledButton = styled(Button).attrs({
-})`
+const StyledButton = styled(Button).attrs({})`
     && {
     background: #61a46a;
     color: #FFF;
@@ -56,8 +67,6 @@ const StyledButton = styled(Button).attrs({
     margin: 15px;
   }
 `;
-
-
 
 
 class Home extends Component {
@@ -71,10 +80,12 @@ class Home extends Component {
                     <Link to="/work"><StyledButton><Icon name="briefcase"/>Work</StyledButton></Link>
                     <StyledButton><Icon name="hand peace"/>About</StyledButton>
                 </HelloText>
-                <Contact>   <img src={email} alt='Email' data-tip="hello at tjbowen.me"></img>
-                    <ReactTooltip delayHide={1000}  />
-                    <img src={github} alt='Github'></img>
-                            <img src={twitter} alt='Twitter'></img></Contact>
+                <Contact>
+                    <a href="mailto:hello@tjbowen.me"><img src={email} alt='Email' data-tip="hello at tjbowen.me"></img></a>
+                    <ReactTooltip delayHide={1000}/>
+                    <a href="https://www.github.com/tbow5257" target="_blank"><img src={github} alt='Github'></img></a>
+                    <a href="https://twitter.com/tbow5257" target="_blank"><img src={twitter} alt='Twitter'></img></a>
+                </Contact>
             </Page>
         );
     }

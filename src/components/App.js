@@ -23,7 +23,6 @@ const RadialGradient = styled.div.attrs({
   width:75%;
   justify-content: center;
   align-items: center;
-
 `;
 
 const PageContent = styled.div`
