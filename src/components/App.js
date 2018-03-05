@@ -74,10 +74,9 @@ class App extends Component {
                                />
                             <BackgroundContainer onMouseMove={this._onMouseMove.bind(this)}>
                                 <RadialGradient calcX={Math.round(x / width * 77)} calcY={Math.round(y / height * 77)}>
-                                    <PageContent>
-                                        <TransitionGroup style={{display: 'flex', width: '100%'}}>
-                                            <CSSTransition key={location.key} classNames="fade" timeout={400} mountOnEnter={true}
-                                                           unmountOnExit={true}>
+                                    <PageContent >
+                                        <TransitionGroup style={{ width: '100%', position: 'relative', }}>
+                                            <CSSTransition key={location.key} classNames="fade" timeout={233}>
                                                 <Switch location={location}>
                                                     <Route exact path="/" component={Home}/>
                                                     <Route exact path="/work" component={Work}/>
