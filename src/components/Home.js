@@ -81,10 +81,10 @@ class Home extends Component {
                     <StyledButton><Icon name="hand peace"/>About</StyledButton>
                 </HelloText>
                 <Contact>
-                    <a href="mailto:hello@tjbowen.me"><img src={email} alt='Email' data-tip="hello at tjbowen.me"></img></a>
+                    <a href="mailto:hello@tjbowen.me" rel="noopener noreferrer"><img src={email} alt='Email' data-tip="hello at tjbowen.me"></img></a>
                     <ReactTooltip delayHide={1000}/>
-                    <a href="https://www.github.com/tbow5257" target="_blank"><img src={github} alt='Github'></img></a>
-                    <a href="https://twitter.com/tbow5257" target="_blank"><img src={twitter} alt='Twitter'></img></a>
+                    <a href="https://www.github.com/tbow5257" target="_blank" rel="noopener noreferrer"><img src={github} alt='Github'></img></a>
+                    <a href="https://twitter.com/tbow5257" target="_blank" rel="noopener noreferrer"><img src={twitter} alt='Twitter'></img></a>
                 </Contact>
             </Page>
         );

@@ -47,10 +47,10 @@ const Resume = styled.div`
 
 let brakePoints = [350, 500, 750];
 let images = [];
-const imgId = [1011, 883, 1074, 823, 64, 65];
-for(let i = 0; i< imgId.length; i++){
-    const ih = 200 + Math.floor(Math.random()*10)*15;
-    images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
+const array = ["patrickteachingart", "cardboard_app", "museum_map_app", "kali", "psdtires", "imedsb"
+                , "shine_light_site", "flowersbyemma"];
+for(let i = 0; i< array.length; i++){
+    images.push(`${require(`../assets/${array[i]}.jpg`)}`);
 }
 
 

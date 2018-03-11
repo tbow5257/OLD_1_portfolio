@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-const { render } = 'react-dom';
+import React from 'react';
+
+// Adapted from Goran Rakic's pen: https://codepen.io/golle404/pen/wWoXwz
 
 class Grid extends React.Component{
     render(){
         return (
             <div className="container">
                 <div className="masonry-container">
-                    <p>ReactJS Responsive/Modular Masonry Grid.</p>
-                    <Masonry brakePoints={this.props.brakePoints} images = {this.props.images} >
+                    <Masonry brakePoints={this.props.brakePoints}>
                         {this.props.images.map((image, id) => {
                             return (
                                 <Tile src={image} />

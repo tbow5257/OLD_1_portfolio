@@ -35,18 +35,11 @@ body {
 }
 
 .masonry-container{
-	width: 80%;
+	width: 90%;
 	margin: auto;
 	margin-top: 10px;
-	border: 1px solid rgba(0,0,0,.1);
-	p{
-		text-align: center;
-		padding: 4px;
-		font-family: monospace;
-		background: #222;
-		color: #efefef;
-	}
 }
+
 .masonry{
 	display: flex;
 	flex-direction: row;
@@ -55,6 +48,7 @@ body {
 	width: 100%;
 	margin: auto;
 }
+
 .column{
 	display: flex;
 	flex-direction: column;
@@ -66,7 +60,6 @@ body {
 	margin: 4px;
 	img{
 		box-shadow: 0 1px 1px 2px rgba(0,0,0, .15);
-		border-radius: 10px;
 		width: 100%;
 	}
 }
