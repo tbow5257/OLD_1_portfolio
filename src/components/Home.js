@@ -69,11 +69,10 @@ const Contact = styled.div`
       transition: all 200ms ease-in;
       filter: drop-shadow(44px 44px 150px #222);
         -webkit-filter: drop-shadow(5px 5px 5px #222 );
-
-  }
+    }
 `;
 
-const StyledButton = styled(Button).attrs({})`
+const StyledButton = styled(Button)`
     && {
     background: #61a46a;
     color: #FFF;
