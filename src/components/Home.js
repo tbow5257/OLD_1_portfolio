@@ -32,9 +32,25 @@ const Logo = styled.div`
 const HelloText = styled.div`
   font-size: 2.5em;
   text-align: center;
+  p {
+    margin: 5px auto;
+  }
   p:nth-of-type(2) {
     font-size: 0.7em;
+    margin-bottom: 35px;
   }
+`;
+
+const Skills = styled.div`
+  width: 70%;
+  text-align: center;
+  p {
+    margin: 17px auto;
+  }
+`;
+
+const Nav = styled.div`
+
 `;
 
 const Contact = styled.div`
@@ -75,11 +91,19 @@ class Home extends Component {
             <Page>
                 <Logo> <img src={icon} alt='Dankbytes Icon'></img>Dankbytes</Logo>
                 <HelloText>
-                    <p>Thomas Bowen's portfolio page</p>
-                    <p>A web developer on the west coast</p>
-                    <Link to="/work"><StyledButton><Icon name="briefcase"/>Work</StyledButton></Link>
-                    <StyledButton><Icon name="hand peace"/>About</StyledButton>
+                    <p>Thomas Bowen's portfolio site</p>
+                    <p>West coast developer, designer</p>
                 </HelloText>
+                <Skills>
+                    <p>Hi. I like making unique web experiences with JavaScript, Python and PHP.</p>
+                    <p>For front-end, I prefer using React or Jekyll and am learning Angular.</p>
+                    <p>Flask for backend along with Node.js and Wordpress API.</p>
+                    <p>If you like my work, drop me a line.</p>
+                </Skills>
+                <Nav>
+                    <Link to="/work"><StyledButton><Icon name="briefcase"/>Work</StyledButton></Link>
+                    {/*<StyledButton><Icon name="hand peace"/>About</StyledButton>*/}
+                </Nav>
                 <Contact>
                     <a href="mailto:hello@tjbowen.me" rel="noopener noreferrer"><img src={email} alt='Email' data-tip="hello at tjbowen.me"></img></a>
                     <ReactTooltip delayHide={1000}/>

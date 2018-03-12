@@ -27,9 +27,9 @@ const photos = [
     { src: `${require('../assets/weddingflowerskauai.JPG')}`, width: 3, height: 2 },
     { src: `${require('../assets/future_reality.jpg')}`, width: 3, height: 2 },
     { src: `${require('../assets/cardboard_app.jpg')}`, width: 4, height: 2 },
-    { src: `${require('../assets/kali.jpg')}`, width: 3, height: 2 },
-    { src: `${require('../assets/shine_light_site.jpg')}`, width: 4, height: 2 },
-    { src: `${require('../assets/flowersbyemma.jpg')}`, width: 4, height: 2 }
+    // { src: `${require('../assets/kali.jpg')}`, width: 3, height: 2 },
+    // { src: `${require('../assets/shine_light_site.jpg')}`, width: 4, height: 2 },
+    // { src: `${require('../assets/flowersbyemma.jpg')}`, width: 4, height: 2 }
 ];
 
 class Masonry extends React.Component {
