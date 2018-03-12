@@ -1,86 +1,72 @@
 import React from 'react';
+import styled from 'styled-components';
+import Gallery from 'react-photo-gallery';
+import Lightbox from 'react-images';
 
-// Adapted from Goran Rakic's pen: https://codepen.io/golle404/pen/wWoXwz
+const MasonryContainer = styled.div`
 
-class Grid extends React.Component{
-    render(){
+
+`;
+
+
+const photos = [
+    { src: `${require('../assets/patrickteachingart.jpg')}`, width: 4, height: 2 },
+    { src: 'https://source.unsplash.com/Dm-qxdynoEc/800x799', width: 1, height: 1 },
+    { src: 'https://source.unsplash.com/qDkso9nvCg0/600x799', width: 3, height: 2 },
+    { src: 'https://source.unsplash.com/iecJiKe_RNg/600x799', width: 3, height: 2 },
+    { src: 'https://source.unsplash.com/epcsn8Ed8kY/600x799', width: 3, height: 2 },
+    { src: 'https://source.unsplash.com/NQSWvyVRIJk/800x599', width: 4, height: 2 },
+    { src: 'https://source.unsplash.com/zh7GEuORbUw/600x799', width: 3, height: 2 },
+    { src: 'https://source.unsplash.com/PpOHJezOalU/800x599', width: 4, height: 2 },
+    { src: 'https://source.unsplash.com/I1ASdgphUH4/800x599', width: 4, height: 2 }
+];
+
+class Masonry extends React.Component {
+    constructor() {
+        super();
+        this.state = { currentImage: 0 };
+        this.closeLightbox = this.closeLightbox.bind(this);
+        this.openLightbox = this.openLightbox.bind(this);
+        this.gotoNext = this.gotoNext.bind(this);
+        this.gotoPrevious = this.gotoPrevious.bind(this);
+    }
+    openLightbox(event, obj) {
+        this.setState({
+            currentImage: obj.index,
+            lightboxIsOpen: true,
+        });
+    }
+    closeLightbox() {
+        this.setState({
+            currentImage: 0,
+            lightboxIsOpen: false,
+        });
+    }
+    gotoPrevious() {
+        this.setState({
+            currentImage: this.state.currentImage - 1,
+        });
+    }
+    gotoNext() {
+        this.setState({
+            currentImage: this.state.currentImage + 1,
+        });
+    }
+    render() {
         return (
-            <div className="container">
-                <div className="masonry-container">
-                    <Masonry brakePoints={this.props.brakePoints}>
-                        {this.props.images.map((image, id) => {
-                            return (
-                                <Tile src={image} />
-                            )
-                        })}
-                    </Masonry>
-                </div>
-            </div>
-        )
-    }
-}
-
-const Tile = ({src}) => {
-    return (
-        <div className="tile">
-            <img src={src} />
-        </div>
-    );
-};
-
-class Masonry extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {columns: 1};
-        this.onResize = this.onResize.bind(this);
-    }
-    componentDidMount(){
-        this.onResize();
-        window.addEventListener('resize', this.onResize)
-    }
-
-    getColumns(w){
-        return this.props.brakePoints.reduceRight( (p, c, i) => {
-            return c < w ? p : i;
-        }, this.props.brakePoints.length) + 1;
-    }
-
-    onResize(){
-        const columns = this.getColumns(this.refs.Masonry.offsetWidth);
-        if(columns !== this.state.columns){
-            this.setState({columns: columns});
-        }
-
-    }
-
-    mapChildren(){
-        let col = [];
-        const numC = this.state.columns;
-        for(let i = 0; i < numC; i++){
-            col.push([]);
-        }
-        return this.props.children.reduce((p,c,i) => {
-            p[i%numC].push(c);
-            return p;
-        }, col);
-    }
-
-    render(){
-        return (
-            <div className="masonry" ref="Masonry">
-                {this.mapChildren().map((col, ci) => {
-                    return (
-                        <div className="column" key={ci} >
-                            {col.map((child, i) => {
-                                return <div key={i} >{child}</div>
-                            })}
-                        </div>
-                    )
-                })}
-            </div>
+            <MasonryContainer>
+                <Gallery photos={photos} onClick={this.openLightbox} />
+                <Lightbox images={photos}
+                          onClose={this.closeLightbox}
+                          onClickPrev={this.gotoPrevious}
+                          onClickNext={this.gotoNext}
+                          currentImage={this.state.currentImage}
+                          isOpen={this.state.lightboxIsOpen}
+                />
+            </MasonryContainer>
         )
     }
 }
 
 
-export default Grid;
+export default Masonry;

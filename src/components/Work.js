@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Grid from './Grid';
+import Masonry from './Grid';
 import styled from 'styled-components';
 import {Button, Icon} from 'semantic-ui-react'
 
@@ -12,6 +12,11 @@ const Page = styled.div`
     justify-content: space-between;
     width: 100%;
     margin: 10px;
+`;
+
+const TopRow = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Navigation = styled.div`
@@ -27,6 +32,7 @@ const Navigation = styled.div`
 const Hi = styled.div`
     text-align: center;
     font-size: 2.5em;
+    margin: 15px;
 `;
 
 const GridButtons = styled.div`
@@ -35,48 +41,58 @@ const GridButtons = styled.div`
 `;
 
 const GridContainer = styled.div`
-    align-items: center;
-    justify-items: center;
-    height: 400px;
+    width: 90%;
+    margin: 15px auto;
 `;
 
 const Resume = styled.div`
     align-items: center;
     justify-items: center;
+    margin: auto 35px;
+    
+        .user {
+       position: relative;
+       left: -.5em;
+       width: .2em;
+       vertical-align: -.25em;
+       text-shadow: -1px -1px 0px white, -1px 1px 0px white, -1px 0px 0px white; // optional contrast
+     }
 `;
 
-let brakePoints = [350, 500, 750];
-let images = [];
+
 const array = ["patrickteachingart", "cardboard_app", "museum_map_app", "kali", "psdtires", "imedsb"
                 , "shine_light_site", "flowersbyemma"];
-for(let i = 0; i< array.length; i++){
-    images.push(`${require(`../assets/${array[i]}.jpg`)}`);
-}
-
 
 export default class Work extends Component {
     render() {
         return (
             <Page>
-                <Navigation>
-                    <Button >
-                        <Icon name="arrow left" />
-                        <Icon name="home" />
-                    </Button>
-                </Navigation>
-                <Hi>
-                    Work
-                </Hi>
+                <TopRow>
+                    <Navigation>
+                        <Button >
+                            <Icon name="arrow left" />
+                            <Icon name="home" />
+                        </Button>
+                    </Navigation>
+                    <Hi>
+                        Work
+                    </Hi>
+                    <Resume>
+                        Resume
+                        <span>
+                        <Icon name="file text" />
+                        <Icon name="user" />
+                        </span>
+                    </Resume>
+                </TopRow>
+
+
                 <GridButtons>
 
                 </GridButtons>
                 <GridContainer>
-                    <Grid images = {images} brakePoints={brakePoints} />
+                    <Masonry />
                 </GridContainer>
-                <Resume>
-
-                </Resume>
-
 
             </Page>
             );
