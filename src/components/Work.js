@@ -85,10 +85,7 @@ export default class Work extends Component {
                         </span>
                     </Resume>
                 </TopRow>
-
-
                 <GridButtons>
-
                 </GridButtons>
                 <GridContainer>
                     <Masonry />

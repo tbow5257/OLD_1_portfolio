@@ -2,23 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-images';
+import objectFitImages from 'object-fit-images';
+
 
 const MasonryContainer = styled.div`
+  img {
+    object-fit: cover;
+    font-family: 'object-fit: cover;'
+  }
+  
+  img:nth-of-type(2) {
+    object-fit: cover;
+    object-position: left;
+    font-family: 'object-fit: cover; object-position: left;'
 
-
+  }
 `;
 
 
 const photos = [
     { src: `${require('../assets/patrickteachingart.jpg')}`, width: 4, height: 2 },
-    { src: 'https://source.unsplash.com/Dm-qxdynoEc/800x799', width: 1, height: 1 },
-    { src: 'https://source.unsplash.com/qDkso9nvCg0/600x799', width: 3, height: 2 },
-    { src: 'https://source.unsplash.com/iecJiKe_RNg/600x799', width: 3, height: 2 },
-    { src: 'https://source.unsplash.com/epcsn8Ed8kY/600x799', width: 3, height: 2 },
-    { src: 'https://source.unsplash.com/NQSWvyVRIJk/800x599', width: 4, height: 2 },
-    { src: 'https://source.unsplash.com/zh7GEuORbUw/600x799', width: 3, height: 2 },
-    { src: 'https://source.unsplash.com/PpOHJezOalU/800x599', width: 4, height: 2 },
-    { src: 'https://source.unsplash.com/I1ASdgphUH4/800x599', width: 4, height: 2 }
+    { src: `${require('../assets/museum_map_app.jpg')}`, width: 1, height: 1 },
+    { src: `${require('../assets/imedsb.jpg')}`, width: 3, height: 2 },
+    { src: `${require('../assets/weddingflowerskauai.JPG')}`, width: 3, height: 2 },
+    { src: `${require('../assets/future_reality.jpg')}`, width: 3, height: 2 },
+    { src: `${require('../assets/cardboard_app.jpg')}`, width: 4, height: 2 },
+    { src: `${require('../assets/kali.jpg')}`, width: 3, height: 2 },
+    { src: `${require('../assets/shine_light_site.jpg')}`, width: 4, height: 2 },
+    { src: `${require('../assets/flowersbyemma.jpg')}`, width: 4, height: 2 }
 ];
 
 class Masonry extends React.Component {
@@ -30,6 +41,11 @@ class Masonry extends React.Component {
         this.gotoNext = this.gotoNext.bind(this);
         this.gotoPrevious = this.gotoPrevious.bind(this);
     }
+
+    componentDidMount() {
+        objectFitImages();
+    }
+
     openLightbox(event, obj) {
         this.setState({
             currentImage: obj.index,
